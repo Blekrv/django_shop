@@ -21,5 +21,7 @@ from django.urls.conf import include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'', include('shop.urls')),
+    path('', include(('shop.urls', 'shop'), namespace='shop')),
+    # re_path(r'cart/', include('cart.urls', namespace='cart')),
+    path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
